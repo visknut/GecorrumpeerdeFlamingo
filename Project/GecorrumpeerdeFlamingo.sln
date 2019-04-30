@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GecorrumpeerdeFlamingo", "GecorrumpeerdeFlamingo\GecorrumpeerdeFlamingo.csproj", "{AD66B05C-C350-4F15-ABFA-46DF05DBC66D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		exe|Any CPU = exe|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD66B05C-C350-4F15-ABFA-46DF05DBC66D}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{AD66B05C-C350-4F15-ABFA-46DF05DBC66D}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{AD66B05C-C350-4F15-ABFA-46DF05DBC66D}.exe|Any CPU.ActiveCfg = exe|Any CPU
+		{AD66B05C-C350-4F15-ABFA-46DF05DBC66D}.exe|Any CPU.Build.0 = exe|Any CPU
+		{AD66B05C-C350-4F15-ABFA-46DF05DBC66D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD66B05C-C350-4F15-ABFA-46DF05DBC66D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A42CE809-28C5-4FCD-804B-B241AFC66BB5}
+	EndGlobalSection
+EndGlobal
