@@ -1,9 +1,6 @@
-﻿using System;
+﻿namespace GecorrumpeerdeFlamingo.Entities;
 
-namespace GecorrumpeerdeFlamingo.Entities
+public class Component
 {
-    public class Component
-    {
-        public bool Active { get; set; } = true;
-    }
+    public bool Active { get; set; } = true;
 }

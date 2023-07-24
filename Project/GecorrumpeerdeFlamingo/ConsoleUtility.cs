@@ -1,61 +1,66 @@
-﻿using GecorrumpeerdeFlamingo.Entities;
+﻿using GecorrumpeerdeFlamingo.Constants;
+using GecorrumpeerdeFlamingo.Entities;
+using GecorrumpeerdeFlamingo.Extensions;
 using System;
-using Action = GecorrumpeerdeFlamingo.Entities.Action;
+using Action = GecorrumpeerdeFlamingo.Constants.Action;
 
-namespace GecorrumpeerdeFlamingo
+namespace GecorrumpeerdeFlamingo;
+
+public class ConsoleUtility
 {
-    public class ConsoleUtility
+
+    public static Command GetAction()
     {
+        Console.Write("\nType uw input: ");
+        var result = Console.ReadLine();
 
-        static public Command GetAction()
+        if (string.IsNullOrEmpty(result.Trim()))
         {
-            var result = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(result.Trim()))
-            {
-                Error();
-                return null;
-            }
-
-            var results = result.Split(" ");
-            var actionString = results[0];
-
-            object action;
-
-            if (!Enum.TryParse(typeof(Action), actionString, out action))
-            {
-                Error();
-                return null;
-            }
-
-            var id = "";
-            if (results.Length > 1)
-            {
-                id = results[1];
-            }
-
-            Console.Clear();
-
-            return new Command(id, (Action)action);
+            Error();
+            return null;
         }
 
-        static private void Error()
+        var results = result.Split(" ");
+        var actionString = results[0];
+
+        if (!Enum.TryParse(typeof(Action), actionString.ToLower(), out var action))
         {
-            Console.WriteLine("Deze input werd niet begrepen. Probeer het opnieuw.");
-            Help();
-            WaitOnUser();
-        }
-        static public void Help()
-        {
-            Console.WriteLine("(Gebruik 'druk' voor knoppen, 'snijd' voor draden, 'gebruik' voor een element op het input component. [bijv: 'druk rode knop']. Type 'analyse' voor een analyse van de bom.)");
+            Error();
+            return null;
         }
 
-        static public void WaitOnUser()
+        var id = "";
+        if (results.Length > 1)
         {
-            Console.Beep();
-            Console.WriteLine("(Druk enter om verder te gaan)");
-            Console.ReadKey();
-            Console.Clear();
+            id = results[1];
         }
+
+        Console.Clear();
+
+        return new Command(id, (Action)action);
+    }
+
+    private static void Error()
+    {
+        Console.WriteLine("\nDeze input werd niet begrepen. Probeer het opnieuw.");
+        Help();
+        WaitOnUser();
+    }
+
+    public static void Help()
+    {
+        Console.Write(
+            "Type:\n- 'druk' voor knoppen \n- 'knip' voor draden \n- 'gebruik' voor een element op het input component \n\nBijvoorbeeld: 'druk ");
+        Color.Red.PrintColor();
+        Console.WriteLine(
+            " knop' of 'gebruik U+0DF4'\n\nType 'analyse' voor een analyse van de bom.");
+    }
+
+    public static void WaitOnUser()
+    {
+        Console.Beep();
+        Console.WriteLine("(Druk enter om verder te gaan)");
+        Console.ReadKey();
+        Console.Clear();
     }
 }

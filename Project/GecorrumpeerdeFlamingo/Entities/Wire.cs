@@ -1,27 +1,13 @@
-﻿using System;
+﻿using GecorrumpeerdeFlamingo.Constants;
 
-namespace GecorrumpeerdeFlamingo.Entities
+namespace GecorrumpeerdeFlamingo.Entities;
+
+public class Wire : Component
 {
-    public class Wire : Component
+    public Color Color { get; set; }
+
+    public Wire(Color color)
     {
-        public string Color { get; set; }
-
-        public Wire(string color)
-        {
-            Color = color;
-        }
-
-        public override string ToString()
-        {
-            if (Active)
-            {
-                return $"Een {Color} draad.";
-            }
-            else
-            {
-                return $"Een doorgeknipte {Color} draad.";
-            }
-            
-        }
+        Color = color;
     }
 }

@@ -1,43 +1,53 @@
-﻿using System;
+﻿using GecorrumpeerdeFlamingo.Extensions;
+using System;
 using System.Collections.Generic;
 
-namespace GecorrumpeerdeFlamingo.Entities
+namespace GecorrumpeerdeFlamingo.Entities;
+
+public class Bomb
 {
-    public class Bomb
+    public string Color { get; set; }
+    public List<Component> Components { get; set; }
+    public Queue<string> Display { get; set; }
+    public Timer Timer { get; set; }
+    public List<string> ObservationsOnInspect { get; set; }
+    public Stack<Command> AcceptedInput { get; set; }
+
+    public void Print()
     {
-        public string Color { get; set; }
-        public List<Component> Components { get; set; }
-        public Queue<string> Display { get; set; }
-        public Timer Timer { get; set; }
-        public List<string> ObservationsOnInspect { get; set; }
-        public Stack<Command> AcceptedInput { get; set; }
+        Console.WriteLine($"{Timer}");
+        Console.WriteLine($"De display laat de volgende code zien: {Display.Peek()}\n");
+        Console.WriteLine("De volgende componenten zijn aanwezig op de bom:");
 
-        override public string ToString()
+        foreach (var component in Components)
         {
-            var description = "";
-
-            description += $"{Timer.ToString()}\n";
-
-            description += $"De display laat de volgende code zien: {Display.Peek()}\n";
-
-            description += $"\nDe volgende componenten zijn aanwezig op de bom:\n";
-
-            foreach (var component in Components)
+            switch (component)
             {
-                description += $"- {component.ToString()}\n";
+                case Button button:
+                    Console.Write("- Een ");
+                    button.Color.PrintColor();
+                    Console.WriteLine(button.Active ? " knop." : " ingedrukte knop.");
+                    break;
+                case Wire wire:
+                    Console.Write("- Een ");
+                    wire.Color.PrintColor();
+                    Console.WriteLine(wire.Active ? " draad." : " doorgeknipt draad.");
+                    break;
+                case Input:
+                    Console.WriteLine(component);
+                    break;
             }
-            return description;
         }
+    }
 
-        public string AnalyzeBomb()
+    public string AnalyzeBomb()
+    {
+        var description = "Analyse bom:\n";
+
+        foreach (var observation in ObservationsOnInspect)
         {
-            var description = "Analyse bom:\n";
-
-            foreach (var observation in ObservationsOnInspect)
-            {
-                description += $"- {observation.ToString()}\n";
-            }
-            return description;
+            description += $"- {observation}\n";
         }
+        return description;
     }
 }

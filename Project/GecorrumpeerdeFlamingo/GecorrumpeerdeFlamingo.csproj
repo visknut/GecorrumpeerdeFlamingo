@@ -2,11 +2,16 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <Configurations>Debug;Release;exe</Configurations>
-    <ApplicationIcon />
-    <StartupObject></StartupObject>
+    <ApplicationIcon>Flamingo-icon.ico</ApplicationIcon>
+    <StartupObject>GecorrumpeerdeFlamingo.Program</StartupObject>
+    <PackageIcon>Flamingo-icon.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Flamingo-icon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Update="Sounds\dial.mp3">
