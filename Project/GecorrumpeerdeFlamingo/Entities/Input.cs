@@ -55,6 +55,6 @@ public class Input : Component
     private string AsChar(string symbol)
     {
         var value = int.Parse(symbol, System.Globalization.NumberStyles.HexNumber);
-        return char.ConvertFromUtf32(value).ToString();
+        return char.ConvertFromUtf32(value);
     }
 }

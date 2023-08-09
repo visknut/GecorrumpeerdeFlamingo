@@ -1,4 +1,4 @@
-﻿using GecorrumpeerdeFlamingo.Constants;
+using GecorrumpeerdeFlamingo.Constants;
 using GecorrumpeerdeFlamingo.Entities;
 using GecorrumpeerdeFlamingo.Extensions;
 using System;
@@ -149,16 +149,11 @@ internal class Program
             if (component.GetType() != typeof(Input)) continue;
 
             var inputComponent = (Input)component;
+            inputComponent.ActiveSymbols.Remove(name[2..]);
 
-            foreach (var symbol in inputComponent.Symbols)
+            if (inputComponent.ActiveSymbols.Count == 0)
             {
-                if (symbol != name) continue;
-
-                inputComponent.ActiveSymbols.Remove(name);
-                if (inputComponent.ActiveSymbols.Count == 0)
-                {
-                    inputComponent.Active = false;
-                }
+                inputComponent.Active = false;
             }
 
             Console.WriteLine($"Het element met het symbool {name} was succesvol geactiveerd.");
